@@ -1,6 +1,7 @@
 // FILE: CaptureManager.swift
 import AVFoundation
 import CoreImage
+import CoreGraphics
 import SwiftUI
 import ObjectiveC
 
@@ -19,15 +20,23 @@ final class CaptureManager: NSObject, ObservableObject {
     @Published var orientation: AVCaptureVideoOrientation = .portrait
     @Published var zoomFactor: CGFloat = 1.0
     @Published var zebrasThreshold: Double = 0.95
-    @Published var focusPeakingEnabled: Bool = false
+    @Published var focusPeakingEnabled: Bool = false {
+        didSet { if !focusPeakingEnabled { focusPeakingMask = nil } }
+    }
     @Published var histogramEnabled: Bool = true
+    @Published var zebraOverlayEnabled: Bool = true {
+        didSet { if !zebraOverlayEnabled { zebraMask = nil } }
+    }
     @Published var focusReticleVisible: Bool = false
     @Published var focusReticlePoint: CGPoint = .zero
     @Published var histogramData: [CGFloat] = Array(repeating: 0.0, count: 64)
+    @Published var zebraMask: CGImage?
+    @Published var focusPeakingMask: CGImage?
 
     let session = AVCaptureSession()
 
     private let sessionQueue = DispatchQueue(label: "com.ndi.capture.session")
+    private let analysisQueue = DispatchQueue(label: "com.ndi.capture.analysis", qos: .userInitiated)
     private let videoOutput = AVCaptureVideoDataOutput()
     private let audioOutput = AVCaptureAudioDataOutput()
     private var videoInput: AVCaptureDeviceInput?
@@ -38,8 +47,9 @@ final class CaptureManager: NSObject, ObservableObject {
     private weak var bitrateMeter: BitrateMeter?
     private let encoder = HEVCEncoder()
     private var isEncoderPrepared = false
-
-    private var histogramSamples: [CGFloat] = Array(repeating: 0.0, count: 64)
+    private let histogramGenerator = HistogramGenerator()
+    private let zebraGenerator = ZebraMaskGenerator()
+    private let focusPeakingGenerator = FocusPeakingMaskGenerator()
 
     override init() {
         super.init()
@@ -385,28 +395,44 @@ final class CaptureManager: NSObject, ObservableObject {
         bitrateMeter?.ingest(bytes: frame.data.count, timestamp: frame.presentationTimeStamp)
     }
 
-    private func updateHistogram(from sampleBuffer: CMSampleBuffer) {
-        guard histogramEnabled, let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-        CVPixelBufferLockBaseAddress(pixelBuffer, .readOnly)
-        defer { CVPixelBufferUnlockBaseAddress(pixelBuffer, .readOnly) }
-        let width = CVPixelBufferGetWidth(pixelBuffer)
-        let height = CVPixelBufferGetHeight(pixelBuffer)
-        guard let baseAddress = CVPixelBufferGetBaseAddressOfPlane(pixelBuffer, 0) else { return }
-        let buffer = baseAddress.assumingMemoryBound(to: UInt8.self)
-        let binCount = histogramSamples.count
-        var bins = Array(repeating: 0, count: binCount)
-        let sampleCount = width * height
-        let step = max(1, sampleCount / (binCount * 4))
-        var index = 0
-        while index < sampleCount {
-            let y = buffer[index]
-            let bin = Int(Double(y) / 255.0 * Double(binCount - 1))
-            bins[bin] += 1
-            index += step
-        }
-        histogramSamples = bins.map { CGFloat($0) / CGFloat(sampleCount) * 4.0 }
-        DispatchQueue.main.async {
-            self.histogramData = self.histogramSamples
+    private func scheduleVisualAnalysis(for sampleBuffer: CMSampleBuffer) {
+        let histogramEnabled = self.histogramEnabled
+        let zebraEnabled = self.zebraOverlayEnabled
+        let focusEnabled = self.focusPeakingEnabled
+        guard histogramEnabled || zebraEnabled || focusEnabled else { return }
+        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
+        let threshold = zebrasThreshold
+
+        CVPixelBufferRetain(pixelBuffer)
+        analysisQueue.async { [weak self] in
+            defer { CVPixelBufferRelease(pixelBuffer) }
+            guard let self = self else { return }
+
+            var histogram: [CGFloat]?
+            var zebraImage: CGImage?
+            var focusImage: CGImage?
+
+            if histogramEnabled {
+                histogram = self.histogramGenerator.generate(from: pixelBuffer)
+            }
+            if zebraEnabled {
+                zebraImage = self.zebraGenerator.makeMask(from: pixelBuffer, threshold: threshold)
+            }
+            if focusEnabled {
+                focusImage = self.focusPeakingGenerator.makeMask(from: pixelBuffer)
+            }
+
+            DispatchQueue.main.async {
+                if let histogram = histogram {
+                    self.histogramData = histogram
+                }
+                if zebraEnabled && self.zebraOverlayEnabled {
+                    self.zebraMask = zebraImage
+                }
+                if focusEnabled && self.focusPeakingEnabled {
+                    self.focusPeakingMask = focusImage
+                }
+            }
         }
     }
 }
@@ -423,7 +449,7 @@ extension CaptureManager: AVCaptureVideoDataOutputSampleBufferDelegate, AVCaptur
             if streamState == .running {
                 encoder.encode(sampleBuffer: sampleBuffer)
             }
-            updateHistogram(from: sampleBuffer)
+            scheduleVisualAnalysis(for: sampleBuffer)
         } else if output == audioOutput {
             guard streamState == .running else { return }
             guard let formatDesc = CMSampleBufferGetFormatDescription(sampleBuffer),
