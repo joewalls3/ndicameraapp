@@ -62,12 +62,12 @@ struct ContentView: View {
                     }
                     .overlay(alignment: .center) {
                         if zebrasEnabled {
-                            ZebrasView(mask: captureManager.zebraMask)
+                            ZebrasView(threshold: captureManager.zebrasThreshold)
                         }
                     }
                     .overlay(alignment: .center) {
                         if showFocusPeaking {
-                            FocusPeakingView(mask: captureManager.focusPeakingMask)
+                            FocusPeakingView()
                         }
                     }
                     .overlay(alignment: .center) {
@@ -95,8 +95,6 @@ struct ContentView: View {
                         ndiSourceName = ndiSender.sourceName
                         ndiGroup = ndiSender.group
                         baseZoom = captureManager.zoomFactor
-                        captureManager.zebraOverlayEnabled = zebrasEnabled
-                        captureManager.focusPeakingEnabled = showFocusPeaking
                     }
                     .onDisappear {
                         captureManager.stopPreview()
@@ -259,9 +257,6 @@ struct ContentView: View {
 
                 Section(header: Text("Overlays")) {
                     Toggle("Zebras", isOn: $zebrasEnabled)
-                        .onChange(of: zebrasEnabled) { value in
-                            captureManager.zebraOverlayEnabled = value
-                        }
                     Slider(value: $captureManager.zebrasThreshold, in: 0.5...1.0) {
                         Text("Zebra Threshold")
                     }
