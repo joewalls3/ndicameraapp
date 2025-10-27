@@ -50,6 +50,7 @@ final class CaptureManager: NSObject, ObservableObject {
     private let histogramGenerator = HistogramGenerator()
     private let zebraGenerator = ZebraMaskGenerator()
     private let focusPeakingGenerator = FocusPeakingMaskGenerator()
+    private weak var previewLayer: AVCaptureVideoPreviewLayer?
 
     override init() {
         super.init()
@@ -163,19 +164,28 @@ final class CaptureManager: NSObject, ObservableObject {
         }
     }
 
+    func setPreviewLayer(_ layer: AVCaptureVideoPreviewLayer?) {
+        previewLayer = layer
+    }
+
     func focus(at point: CGPoint, viewSize: CGSize) {
         guard let device = currentVideoDevice else { return }
-        let normalizedPoint = CGPoint(x: point.y / viewSize.height, y: 1.0 - point.x / viewSize.width)
+        let devicePoint: CGPoint
+        if let previewLayer {
+            devicePoint = previewLayer.captureDevicePointConverted(fromLayerPoint: point)
+        } else {
+            devicePoint = CGPoint(x: point.y / viewSize.height, y: 1.0 - point.x / viewSize.width)
+        }
         sessionQueue.async { [weak self] in
             guard let self = self else { return }
             do {
                 try device.lockForConfiguration()
                 if device.isFocusPointOfInterestSupported {
-                    device.focusPointOfInterest = normalizedPoint
+                    device.focusPointOfInterest = devicePoint
                     device.focusMode = .continuousAutoFocus
                 }
                 if device.isExposurePointOfInterestSupported {
-                    device.exposurePointOfInterest = normalizedPoint
+                    device.exposurePointOfInterest = devicePoint
                     device.exposureMode = .continuousAutoExposure
                 }
                 device.unlockForConfiguration()

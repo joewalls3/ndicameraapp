@@ -119,10 +119,9 @@ private func compressionOutputCallback(outputCallbackRefCon: UnsafeMutableRawPoi
 
     let encoder = Unmanaged<HEVCEncoder>.fromOpaque(refCon).takeUnretainedValue()
 
-    guard let attachments = CMSampleBufferGetSampleAttachmentsArray(sampleBuffer, createIfNecessary: false) as? [[CFString: Any]],
-          let isKeyFrame = attachments.first?[kCMSampleAttachmentKey_NotSync as String] as? Bool else {
-        return
-    }
+    let attachments = CMSampleBufferGetSampleAttachmentsArray(sampleBuffer, createIfNecessary: false) as? [[CFString: Any]]
+    let isNotSync = attachments?.first?[kCMSampleAttachmentKey_NotSync as String] as? Bool ?? false
+    let isKeyFrame = !isNotSync
 
     guard let blockBuffer = CMSampleBufferGetDataBuffer(sampleBuffer) else { return }
 
