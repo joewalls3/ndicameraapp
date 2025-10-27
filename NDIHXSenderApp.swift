@@ -19,6 +19,9 @@ struct NDIHXSenderApp: App {
                 .environmentObject(ndiSender)
                 .task {
                     await Permissions.shared.ensureAllPermissions()
+                    await MainActor.run {
+                        captureManager.reconfigureAfterPermissionsGranted()
+                    }
                 }
                 .task {
                     motionLeveler.start()

@@ -97,6 +97,10 @@ final class CaptureManager: NSObject, ObservableObject {
         configureSession()
     }
 
+    func reconfigureAfterPermissionsGranted() {
+        configureSession()
+    }
+
     func toggleStabilization(_ enabled: Bool) {
         stabilizationEnabled = enabled
         updateStabilization()

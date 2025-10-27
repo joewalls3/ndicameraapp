@@ -27,7 +27,7 @@ actor Permissions {
         case .granted:
             return
         case .undetermined:
-            await AVAudioSession.sharedInstance().requestRecordPermission { _ in }
+            _ = await AVAudioSession.sharedInstance().requestRecordPermission()
         default:
             return
         }
