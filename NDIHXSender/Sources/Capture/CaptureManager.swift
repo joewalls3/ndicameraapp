@@ -169,7 +169,7 @@ final class CaptureManager: NSObject, ObservableObject {
     }
 
     func focus(at point: CGPoint, viewSize: CGSize) {
-        guard let device = currentVideoDevice else { return }
+        guard let device = currentVideoDevice, viewSize.width > 0, viewSize.height > 0 else { return }
         let devicePoint: CGPoint
         if let previewLayer {
             devicePoint = previewLayer.captureDevicePointConverted(fromLayerPoint: point)
