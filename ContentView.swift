@@ -220,7 +220,7 @@ struct ContentView: View {
                     .onChange(of: iso) { _ in
                         captureManager.setManualExposure(iso: iso, durationSeconds: shutter, locked: exposureLocked)
                     }
-                    Slider(value: $shutter, in: 1/1000...1/15) {
+                    Slider(value: $shutter, in: 1.0/1000.0...1.0/15.0) {
                         Text("Shutter")
                     }
                     .onChange(of: shutter) { _ in
