@@ -1,5 +1,6 @@
 // FILE: Overlays.swift
 import SwiftUI
+import CoreGraphics
 
 struct HistogramView: View {
     var lumaSamples: [CGFloat]
@@ -23,35 +24,18 @@ struct HistogramView: View {
 }
 
 struct ZebrasView: View {
-    var threshold: Double
+    var mask: CGImage?
 
     var body: some View {
-        GeometryReader { geometry in
-            Canvas { context, size in
-                let spacing: CGFloat = 12
-                let intensity = max(0.1, min(threshold, 1.0))
-                let color = Color.white.opacity(intensity * 0.4)
-                var path = Path()
-                var x: CGFloat = -size.height
-                while x < size.width + size.height {
-                    path.move(to: CGPoint(x: x, y: 0))
-                    path.addLine(to: CGPoint(x: x + size.height, y: size.height))
-                    x += spacing
-                }
-                context.stroke(path, with: .color(color), lineWidth: 3)
-            }
-        }
-        .allowsHitTesting(false)
-        .accessibilityHidden(true)
+        MaskedOverlay(mask: mask, tint: Color.white.opacity(0.65))
     }
 }
 
 struct FocusPeakingView: View {
+    var mask: CGImage?
+
     var body: some View {
-        Rectangle()
-            .strokeBorder(Color.green.opacity(0.4), lineWidth: 1)
-            .blendMode(.screen)
-            .allowsHitTesting(false)
+        MaskedOverlay(mask: mask, tint: Color.green.opacity(0.7))
     }
 }
 
@@ -107,5 +91,29 @@ struct HorizonLevelView: View {
         .frame(width: 120, height: 120)
         .padding()
         .allowsHitTesting(false)
+    }
+}
+
+private struct MaskedOverlay: View {
+    var mask: CGImage?
+    var tint: Color
+
+    var body: some View {
+        GeometryReader { geometry in
+            if let mask = mask {
+                tint
+                    .frame(width: geometry.size.width, height: geometry.size.height)
+                    .blendMode(.screen)
+                    .mask(
+                        Image(decorative: mask, scale: 1.0)
+                            .resizable()
+                            .interpolation(.none)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: geometry.size.width, height: geometry.size.height)
+                    )
+            }
+        }
+        .allowsHitTesting(false)
+        .accessibilityHidden(true)
     }
 }
