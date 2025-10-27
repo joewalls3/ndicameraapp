@@ -1,0 +1,433 @@
+// !$*UTF8*$!
+{
+archiveVersion = 1;
+classes = {};
+objectVersion = 56;
+objects = {
+
+/* Begin PBXBuildFile section */
+01EAF6A029B29A1C007E56F5 /* NDIHXSenderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EAF69F29B29A1C007E56F5 /* NDIHXSenderApp.swift */; };
+01EAF6A129B29A1C007E56F5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EAF69E29B29A1C007E56F5 /* ContentView.swift */; };
+01EAF6A329B29A1C007E56F5 /* Overlays.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EAF6A229B29A1C007E56F5 /* Overlays.swift */; };
+01EAF6A729B29A81007E56F5 /* CaptureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EAF6A429B29A81007E56F5 /* CaptureManager.swift */; };
+01EAF6A829B29A81007E56F5 /* CameraPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EAF6A529B29A81007E56F5 /* CameraPreviewView.swift */; };
+01EAF6A929B29A81007E56F5 /* DeviceCapabilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EAF6A629B29A81007E56F5 /* DeviceCapabilities.swift */; };
+01EAF6AD29B29AE1007E56F5 /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EAF6AC29B29AE1007E56F5 /* Permissions.swift */; };
+01EAF6B129B29B65007E56F5 /* ImageAnalysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EAF6B029B29B65007E56F5 /* ImageAnalysis.swift */; };
+01EAF6B529B29BED007E56F5 /* NDIHXSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EAF6B429B29BED007E56F5 /* NDIHXSender.swift */; };
+01EAF6B929B29C4F007E56F5 /* HEVCEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EAF6B829B29C4F007E56F5 /* HEVCEncoder.swift */; };
+01EAF6BD29B29CFC007E56F5 /* AudioEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EAF6BC29B29CFC007E56F5 /* AudioEngine.swift */; };
+01EAF6C129B29D7A007E56F5 /* BitrateMeter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EAF6C029B29D7A007E56F5 /* BitrateMeter.swift */; };
+01EAF6C529B29E20007E56F5 /* MotionLeveler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01EAF6C429B29E20007E56F5 /* MotionLeveler.swift */; };
+01EAF6C929B29ECB007E56F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01EAF6C829B29ECB007E56F5 /* Assets.xcassets */; };
+01EAF6CD29B29F3E007E56F5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01EAF6CC29B29F3E007E56F5 /* Preview Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+01EAF69C29B299F3007E56F5 /* NDIHXSender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NDIHXSender.app; sourceTree = BUILT_PRODUCTS_DIR; };
+01EAF69E29B29A1C007E56F5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+01EAF69F29B29A1C007E56F5 /* NDIHXSenderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDIHXSenderApp.swift; sourceTree = "<group>"; };
+01EAF6A229B29A1C007E56F5 /* Overlays.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Overlays.swift; sourceTree = "<group>"; };
+01EAF6A429B29A81007E56F5 /* CaptureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureManager.swift; sourceTree = "<group>"; };
+01EAF6A529B29A81007E56F5 /* CameraPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewView.swift; sourceTree = "<group>"; };
+01EAF6A629B29A81007E56F5 /* DeviceCapabilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceCapabilities.swift; sourceTree = "<group>"; };
+01EAF6AC29B29AE1007E56F5 /* Permissions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
+01EAF6B029B29B65007E56F5 /* ImageAnalysis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAnalysis.swift; sourceTree = "<group>"; };
+01EAF6B429B29BED007E56F5 /* NDIHXSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NDIHXSender.swift; sourceTree = "<group>"; };
+01EAF6B829B29C4F007E56F5 /* HEVCEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HEVCEncoder.swift; sourceTree = "<group>"; };
+01EAF6BC29B29CFC007E56F5 /* AudioEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioEngine.swift; sourceTree = "<group>"; };
+01EAF6C029B29D7A007E56F5 /* BitrateMeter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitrateMeter.swift; sourceTree = "<group>"; };
+01EAF6C429B29E20007E56F5 /* MotionLeveler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MotionLeveler.swift; sourceTree = "<group>"; };
+01EAF6C829B29ECB007E56F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+01EAF6CC29B29F3E007E56F5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+01EAF6CE29B2A013007E56F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+01EAF69929B299F3007E56F5 /* Frameworks */ = {
+isa = PBXFrameworksBuildPhase;
+buildActionMask = 2147483647;
+files = (
+);
+runOnlyForDeploymentPostprocessing = 0;
+};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+01EAF69A29B299F3007E56F5 = {
+isa = PBXGroup;
+children = (
+01EAF6CF29B2A024007E56F5 /* NDIHXSender */, 
+01EAF69D29B299F3007E56F5 /* Products */,
+);
+sourceTree = "<group>";
+};
+01EAF69D29B299F3007E56F5 /* Products */ = {
+isa = PBXGroup;
+children = (
+01EAF69C29B299F3007E56F5 /* NDIHXSender.app */,
+);
+sourceTree = "<group>";
+};
+01EAF6CF29B2A024007E56F5 /* NDIHXSender */ = {
+isa = PBXGroup;
+children = (
+01EAF6D129B2A05D007E56F5 /* Sources */,
+01EAF6D029B2A04A007E56F5 /* Resources */,
+);
+path = NDIHXSender;
+sourceTree = "<group>";
+};
+01EAF6D029B2A04A007E56F5 /* Resources */ = {
+isa = PBXGroup;
+children = (
+01EAF6C829B29ECB007E56F5 /* Assets.xcassets */,
+01EAF6CB29B29F3E007E56F5 /* Preview Content */,
+01EAF6CE29B2A013007E56F5 /* Info.plist */,
+);
+path = Resources;
+sourceTree = "<group>";
+};
+01EAF6CB29B29F3E007E56F5 /* Preview Content */ = {
+isa = PBXGroup;
+children = (
+01EAF6CC29B29F3E007E56F5 /* Preview Assets.xcassets */,
+);
+path = "Preview Content";
+sourceTree = "<group>";
+};
+01EAF6D129B2A05D007E56F5 /* Sources */ = {
+isa = PBXGroup;
+children = (
+01EAF6D229B2A07E007E56F5 /* App */,
+01EAF6D329B2A09F007E56F5 /* Capture */,
+01EAF6D429B2A0BD007E56F5 /* Analysis */,
+01EAF6D529B2A0DA007E56F5 /* Streaming */,
+);
+path = Sources;
+sourceTree = "<group>";
+};
+01EAF6D229B2A07E007E56F5 /* App */ = {
+isa = PBXGroup;
+children = (
+01EAF69F29B29A1C007E56F5 /* NDIHXSenderApp.swift */,
+01EAF69E29B29A1C007E56F5 /* ContentView.swift */,
+01EAF6A229B29A1C007E56F5 /* Overlays.swift */,
+);
+path = App;
+sourceTree = "<group>";
+};
+01EAF6D329B2A09F007E56F5 /* Capture */ = {
+isa = PBXGroup;
+children = (
+01EAF6A429B29A81007E56F5 /* CaptureManager.swift */,
+01EAF6A529B29A81007E56F5 /* CameraPreviewView.swift */,
+01EAF6A629B29A81007E56F5 /* DeviceCapabilities.swift */,
+01EAF6AC29B29AE1007E56F5 /* Permissions.swift */,
+);
+path = Capture;
+sourceTree = "<group>";
+};
+01EAF6D429B2A0BD007E56F5 /* Analysis */ = {
+isa = PBXGroup;
+children = (
+01EAF6B029B29B65007E56F5 /* ImageAnalysis.swift */,
+);
+path = Analysis;
+sourceTree = "<group>";
+};
+01EAF6D529B2A0DA007E56F5 /* Streaming */ = {
+isa = PBXGroup;
+children = (
+01EAF6B429B29BED007E56F5 /* NDIHXSender.swift */,
+01EAF6B829B29C4F007E56F5 /* HEVCEncoder.swift */,
+01EAF6BC29B29CFC007E56F5 /* AudioEngine.swift */,
+01EAF6C029B29D7A007E56F5 /* BitrateMeter.swift */,
+01EAF6C429B29E20007E56F5 /* MotionLeveler.swift */,
+);
+path = Streaming;
+sourceTree = "<group>";
+};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+01EAF69B29B299F3007E56F5 /* NDIHXSender */ = {
+isa = PBXNativeTarget;
+buildConfigurationList = 01EAF6D929B2A1AF007E56F5 /* Build configuration list for PBXNativeTarget "NDIHXSender" */;
+buildPhases = (
+01EAF69829B299F3007E56F5 /* Sources */,
+01EAF69929B299F3007E56F5 /* Frameworks */,
+01EAF69A29B299F3007E56F5 /* Resources */,
+);
+buildRules = (
+);
+dependencies = (
+);
+name = NDIHXSender;
+productName = NDIHXSender;
+productReference = 01EAF69C29B299F3007E56F5 /* NDIHXSender.app */;
+productType = "com.apple.product-type.application";
+};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+01EAF69729B299F3007E56F5 /* Project object */ = {
+isa = PBXProject;
+attributes = {
+BuildIndependentTargetsInParallel = 1;
+LastSwiftUpdateCheck = 1500;
+LastUpgradeCheck = 1500;
+ORGANIZATIONNAME = "NDI Camera";
+TargetAttributes = {
+01EAF69B29B299F3007E56F5 = {
+DevelopmentTeam = "";
+};
+};
+};
+buildConfigurationList = 01EAF69F29B299F3007E56F5 /* Build configuration list for PBXProject "NDIHXSender" */;
+compatibilityVersion = "Xcode 14.0";
+developmentRegion = en;
+hasScannedForEncodings = 0;
+knownRegions = (
+en,
+);
+mainGroup = 01EAF69A29B299F3007E56F5;
+productRefGroup = 01EAF69D29B299F3007E56F5 /* Products */;
+projectDirPath = "";
+projectRoot = "";
+targets = (
+01EAF69B29B299F3007E56F5 /* NDIHXSender */,
+);
+};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+01EAF69A29B299F3007E56F5 /* Resources */ = {
+isa = PBXResourcesBuildPhase;
+buildActionMask = 2147483647;
+files = (
+01EAF6CD29B29F3E007E56F5 /* Preview Assets.xcassets in Resources */,
+01EAF6C929B29ECB007E56F5 /* Assets.xcassets in Resources */,
+);
+runOnlyForDeploymentPostprocessing = 0;
+};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+01EAF69829B299F3007E56F5 /* Sources */ = {
+isa = PBXSourcesBuildPhase;
+buildActionMask = 2147483647;
+files = (
+01EAF6C529B29E20007E56F5 /* MotionLeveler.swift in Sources */,
+01EAF6B129B29B65007E56F5 /* ImageAnalysis.swift in Sources */,
+01EAF6BD29B29CFC007E56F5 /* AudioEngine.swift in Sources */,
+01EAF6A329B29A1C007E56F5 /* Overlays.swift in Sources */,
+01EAF6A129B29A1C007E56F5 /* ContentView.swift in Sources */,
+01EAF6A729B29A81007E56F5 /* CaptureManager.swift in Sources */,
+01EAF6B529B29BED007E56F5 /* NDIHXSender.swift in Sources */,
+01EAF6A829B29A81007E56F5 /* CameraPreviewView.swift in Sources */,
+01EAF6C129B29D7A007E56F5 /* BitrateMeter.swift in Sources */,
+01EAF6B929B29C4F007E56F5 /* HEVCEncoder.swift in Sources */,
+01EAF6AD29B29AE1007E56F5 /* Permissions.swift in Sources */,
+01EAF6A929B29A81007E56F5 /* DeviceCapabilities.swift in Sources */,
+01EAF6A029B29A1C007E56F5 /* NDIHXSenderApp.swift in Sources */,
+);
+runOnlyForDeploymentPostprocessing = 0;
+};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+01EAF6D629B2A10E007E56F5 /* Debug */ = {
+isa = XCBuildConfiguration;
+buildSettings = {
+ALWAYS_SEARCH_USER_PATHS = NO;
+ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+CLANG_ANALYZER_NONNULL = YES;
+CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+CLANG_ENABLE_MODULES = YES;
+CLANG_ENABLE_OBJC_ARC = YES;
+CLANG_ENABLE_OBJC_WEAK = YES;
+CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+CLANG_WARN_BOOL_CONVERSION = YES;
+CLANG_WARN_COMMA = YES;
+CLANG_WARN_CONSTANT_CONVERSION = YES;
+CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+CLANG_WARN_EMPTY_BODY = YES;
+CLANG_WARN_ENUM_CONVERSION = YES;
+CLANG_WARN_INFINITE_RECURSION = YES;
+CLANG_WARN_INT_CONVERSION = YES;
+CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+CLANG_WARN_STRICT_PROTOTYPES = YES;
+CLANG_WARN_SUSPICIOUS_MOVE = YES;
+CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+CODE_SIGN_STYLE = Automatic;
+COPY_PHASE_STRIP = NO;
+DEBUG_INFORMATION_FORMAT = dwarf;
+ENABLE_STRICT_OBJC_MSGSEND = YES;
+ENABLE_TESTABILITY = YES;
+GCC_C_LANGUAGE_STANDARD = gnu11;
+GCC_DYNAMIC_NO_PIC = NO;
+GCC_NO_COMMON_BLOCKS = YES;
+GCC_OPTIMIZATION_LEVEL = 0;
+GCC_PREPROCESSOR_DEFINITIONS = (
+"DEBUG=1",
+"$(inherited)",
+);
+GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+GCC_WARN_UNDECLARED_SELECTOR = YES;
+GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+GCC_WARN_UNUSED_FUNCTION = YES;
+GCC_WARN_UNUSED_VARIABLE = YES;
+INFOPLIST_FILE = NDIHXSender/Resources/Info.plist;
+IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+LD_RUNPATH_SEARCH_PATHS = (
+"$(inherited)",
+"@executable_path/Frameworks",
+);
+MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+ONLY_ACTIVE_ARCH = YES;
+OTHER_SWIFT_FLAGS = "-DDEBUG";
+PRODUCT_BUNDLE_IDENTIFIER = "com.example.NDIHXSender";
+PRODUCT_NAME = "$(TARGET_NAME)";
+SDKROOT = iphoneos;
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+SWIFT_EMIT_LOC_STRINGS = YES;
+SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+SWIFT_VERSION = 5.0;
+TARGETED_DEVICE_FAMILY = "1,2";
+};
+name = Debug;
+};
+01EAF6D729B2A10E007E56F5 /* Release */ = {
+isa = XCBuildConfiguration;
+buildSettings = {
+ALWAYS_SEARCH_USER_PATHS = NO;
+ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+CLANG_ANALYZER_NONNULL = YES;
+CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+CLANG_ENABLE_MODULES = YES;
+CLANG_ENABLE_OBJC_ARC = YES;
+CLANG_ENABLE_OBJC_WEAK = YES;
+CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+CLANG_WARN_BOOL_CONVERSION = YES;
+CLANG_WARN_COMMA = YES;
+CLANG_WARN_CONSTANT_CONVERSION = YES;
+CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+CLANG_WARN_EMPTY_BODY = YES;
+CLANG_WARN_ENUM_CONVERSION = YES;
+CLANG_WARN_INFINITE_RECURSION = YES;
+CLANG_WARN_INT_CONVERSION = YES;
+CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+CLANG_WARN_STRICT_PROTOTYPES = YES;
+CLANG_WARN_SUSPICIOUS_MOVE = YES;
+CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+CODE_SIGN_STYLE = Automatic;
+COPY_PHASE_STRIP = NO;
+DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+ENABLE_NS_ASSERTIONS = NO;
+ENABLE_STRICT_OBJC_MSGSEND = YES;
+GCC_C_LANGUAGE_STANDARD = gnu11;
+GCC_NO_COMMON_BLOCKS = YES;
+GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+GCC_WARN_UNDECLARED_SELECTOR = YES;
+GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+GCC_WARN_UNUSED_FUNCTION = YES;
+GCC_WARN_UNUSED_VARIABLE = YES;
+INFOPLIST_FILE = NDIHXSender/Resources/Info.plist;
+IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+LD_RUNPATH_SEARCH_PATHS = (
+"$(inherited)",
+"@executable_path/Frameworks",
+);
+MTL_ENABLE_DEBUG_INFO = NO;
+PRODUCT_BUNDLE_IDENTIFIER = "com.example.NDIHXSender";
+PRODUCT_NAME = "$(TARGET_NAME)";
+SDKROOT = iphoneos;
+SWIFT_EMIT_LOC_STRINGS = YES;
+SWIFT_VERSION = 5.0;
+TARGETED_DEVICE_FAMILY = "1,2";
+VALIDATE_PRODUCT = YES;
+};
+name = Release;
+};
+01EAF6DA29B2A1AF007E56F5 /* Debug */ = {
+isa = XCBuildConfiguration;
+buildSettings = {
+CODE_SIGN_STYLE = Automatic;
+INFOPLIST_FILE = NDIHXSender/Resources/Info.plist;
+IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+LD_RUNPATH_SEARCH_PATHS = (
+"$(inherited)",
+"@executable_path/Frameworks",
+);
+PRODUCT_BUNDLE_IDENTIFIER = "com.example.NDIHXSender";
+PRODUCT_NAME = "$(TARGET_NAME)";
+SDKROOT = iphoneos;
+SWIFT_VERSION = 5.0;
+TARGETED_DEVICE_FAMILY = "1,2";
+};
+name = Debug;
+};
+01EAF6DB29B2A1AF007E56F5 /* Release */ = {
+isa = XCBuildConfiguration;
+buildSettings = {
+CODE_SIGN_STYLE = Automatic;
+INFOPLIST_FILE = NDIHXSender/Resources/Info.plist;
+IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+LD_RUNPATH_SEARCH_PATHS = (
+"$(inherited)",
+"@executable_path/Frameworks",
+);
+PRODUCT_BUNDLE_IDENTIFIER = "com.example.NDIHXSender";
+PRODUCT_NAME = "$(TARGET_NAME)";
+SDKROOT = iphoneos;
+SWIFT_VERSION = 5.0;
+TARGETED_DEVICE_FAMILY = "1,2";
+};
+name = Release;
+};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+01EAF69F29B299F3007E56F5 /* Build configuration list for PBXProject "NDIHXSender" */ = {
+isa = XCConfigurationList;
+buildConfigurations = (
+01EAF6D629B2A10E007E56F5 /* Debug */,
+01EAF6D729B2A10E007E56F5 /* Release */,
+);
+defaultConfigurationIsVisible = 0;
+defaultConfigurationName = Release;
+};
+01EAF6D929B2A1AF007E56F5 /* Build configuration list for PBXNativeTarget "NDIHXSender" */ = {
+isa = XCConfigurationList;
+buildConfigurations = (
+01EAF6DA29B2A1AF007E56F5 /* Debug */,
+01EAF6DB29B2A1AF007E56F5 /* Release */,
+);
+defaultConfigurationIsVisible = 0;
+defaultConfigurationName = Release;
+};
+/* End XCConfigurationList section */
+};
+rootObject = 01EAF69729B299F3007E56F5 /* Project object */;
+}
